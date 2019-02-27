@@ -80,8 +80,8 @@ const bj=(()=>{
             whosego.score=x.reduce((a,b)=>a+b);
         }
 
-        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" data-value=&${whosego.card[0].suit};> &${whosego.card[0].suit}; ${whosego.card[0].number}; </span> 
-                  <span class="hidden individualCard" data-value=&${whosego.card[1].suit};> &${whosego.card[1].suit}; ${whosego.card[1].number} </span> </div>
+        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit">&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
+                  <span class="hidden individualCard" data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
                   <div class="totalScore"> ${turn} total is: ${whosego.score}; </div>`  
     
 
@@ -103,7 +103,7 @@ const bj=(()=>{
           
           if(player.score > 21)alert('bust your score is '+ player.score);
            if(player.score === 21)alert('21');
-          showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};>${card1.weight} &${card1.suit};</span>`
+          showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
           total.innerHTML= 'players total is :'+ player.score
           
           
@@ -119,7 +119,7 @@ const bj=(()=>{
           while(dealer.score<17){
             card1=deck.pop();
             dealer.score+=card1.weight;
-            showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};> ${card1.weight} &${card1.suit};`
+            showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
             total.innerHTML= 'dealer total is :'+ dealer.score
              
           }
