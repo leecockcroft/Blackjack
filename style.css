@@ -1,40 +1,37 @@
 #hit,#stand {
-
 	display:none;
+	  }
+
+.individualCard{
+	border:1px solid black;
+	height: 145px;
+	width:100px;
+	display:inline-block;
+	position:relative;
 	   }
 
-	   .individualCard{
-		border:1px solid black;
-		    height: 145px;
-		width:100px;
-		display:inline-block;
-		position:relative;
+.individualCard:after{
+	content:attr( data-value );
+	position: absolute;
+	bottom: 17px;
+	right:1px;
 	   }
 
-
-	   .individualCard:after{
-	   	content:attr( data-value );
-	   	position: absolute;
-	   	    bottom: 17px;
-	   	right:1px;
-	   }
-
-	     .individualCard:before{
-	   	    content: attr( data-value );
+	.individualCard:before{
+	  content: attr( data-value );
     position: absolute;
     top: 37px;
     left: 38%;
     font-size: 3rem;
 	   }
 
-	   .suit{
-	   	display:block;
+	.suit{
+	   display:block;
 	   }
 
-	   .card-reverse{
-
-	position: absolute;
-    bottom: 1px;
+	.card-reverse{
+		position: absolute;
+   	bottom: 1px;
     right: 2px;
     transform: rotate(180deg);
 	   }

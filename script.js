@@ -1,5 +1,6 @@
     
 const bj=(()=>{
+
   const suits = ['hearts','clubs','spades','diams'];
   const numbers =['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
   let deck=[];
@@ -13,16 +14,28 @@ const bj=(()=>{
       card:[]
     };
 
-    let reset=()=>{
+ const playerCash=document.getElementById('player-cash');
+  playerCash.innerHTML=`players Balance=${player.cash}`;
+  
+    let betBalance=()=>{
+       
+        const betAmount=document.getElementById('bet').value;
+              player.bet=betAmount
+              betPlaced=player.cash-betAmount;
+              playerCash.innerHTML=`players Balance= ${betPlaced}`;
 
- let deck=[];
-  let player={
-      score:null,
-      card:[]
-    };
-    let dealer={
-      score:null,
-      card:[]
+    }
+ 
+
+    let reset=()=>{
+      let deck=[];
+      let player={
+          score:null,
+          card:[]
+         };
+      let dealer={
+          score:null,
+          card:[]
     };
 
 
@@ -81,16 +94,16 @@ const bj=(()=>{
           let showCards=document.getElementById(turn);
           let hit=document.getElementById('hit');
           let stand=document.getElementById('stand');
-          hit.style.display='inline-block'
-          stand.style.display='inline-block'
+              hit.style.display='inline-block'
+              stand.style.display='inline-block'
           
-          for(var i=0;i<2;i++){
-            let card1=deck.pop();
-            whosego.card.push(card1)
-            x.push(card1.weight)
-            whosego.score=x.reduce((a,b)=>a+b);
+              for(var i=0;i<2;i++){
+                let card1=deck.pop();
+                whosego.card.push(card1)
+                x.push(card1.weight)
+                whosego.score=x.reduce((a,b)=>a+b);
         }
-        console.log(whosego.card[0])
+       
 
         showCards.innerHTML= ` <div class="cards"> <span class="individualCard" style=color:${whosego.card[0].bgcolor} data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit" >&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
                   <span class="hidden individualCard" style=color:${whosego.card[1].bgcolor} data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
@@ -153,7 +166,8 @@ const bj=(()=>{
           
           else{
             total.innerHTML= `dealer is bust with ${dealer.score} player wins`
-            
+            let returns =player.bet*2;
+            player.cash+=returns
           }
           if(player.score ===21){
             total.innerHTML= `PLAYER HAS BLACKJACK`
@@ -164,11 +178,6 @@ const bj=(()=>{
             total.innerHTML= `DEALER HAS BLACKJACK`
 
           }
-        
-
-          
-       
-     
           
         }
         
@@ -176,11 +185,11 @@ const bj=(()=>{
 
 
 let startGame=()=>{
-
-deckOfCards()
-shuffle()
-dealCards('player',player)
-dealCards('dealer',dealer)
+  deckOfCards()
+  betBalance()
+  shuffle()
+  dealCards('player',player)
+  dealCards('dealer',dealer)
 
 
 }
