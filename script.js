@@ -103,7 +103,7 @@ const bj=(()=>{
           
           if(player.score > 21)alert('bust your score is '+ player.score);
            if(player.score === 21)alert('21');
-          showCards.innerHTML+= `${card1.weight} &${card1.suit};`
+          showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};>${card1.weight} &${card1.suit};</span>`
           total.innerHTML= 'players total is :'+ player.score
           
           
@@ -119,7 +119,7 @@ const bj=(()=>{
           while(dealer.score<17){
             card1=deck.pop();
             dealer.score+=card1.weight;
-            showCards.innerHTML+= `${card1.weight} &${card1.suit};`
+            showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};> ${card1.weight} &${card1.suit};`
             total.innerHTML= 'dealer total is :'+ dealer.score
              
           }
