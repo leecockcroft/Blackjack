@@ -32,17 +32,28 @@ const bj=(()=>{
     
     //create deck of cards
     for(var i=0;i<suits.length;i++){
+      let bgcolor=null
+       if(suits[i].startsWith('h')||suits[i].startsWith('d') ){
+        bgcolor='red'
+      }
+      else{
+        bgcolor='black'
+      }
       for(var j=0;j<numbers.length;j++){
         var weight=parseInt(numbers[j])
         var card={
           number:numbers[j],
           suit:suits[i],
-          weight:weight
+          weight:weight,
+          bgcolor:bgcolor
            }
+
+
 
         if(numbers[j] === 'J' ||numbers[j] === 'Q' || numbers[j] === 'K'){card.weight=10;}
         if(numbers[j] === 'A'){card.weight=11} 
-         
+              
+
          deck.push(card);
          }
     } 
@@ -79,9 +90,10 @@ const bj=(()=>{
             x.push(card1.weight)
             whosego.score=x.reduce((a,b)=>a+b);
         }
+        console.log(whosego.card[0])
 
-        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit">&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
-                  <span class="hidden individualCard" data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
+        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" style=color:${whosego.card[0].bgcolor} data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit" >&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
+                  <span class="hidden individualCard" style=color:${whosego.card[1].bgcolor} data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
                   <div class="totalScore"> ${turn} total is: ${whosego.score}; </div>`  
     
 
