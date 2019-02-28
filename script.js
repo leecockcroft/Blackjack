@@ -122,8 +122,9 @@ player.cash+=parseInt(player.bet)
    
 }
 
-let toggle=()=>{
-  let testing = document.querySelectorAll('.test')
+let toggle=(className)=>{
+  let testing = document.querySelectorAll(`.${className}`)
+  console.log(testing)
           for(var i=0;i<testing.length;i++){
            testing[i].classList.toggle("animate");
           }
@@ -144,7 +145,7 @@ let toggle=()=>{
            if(player.score === 21)alert('21');
           showCards.innerHTML+= `<span class="individualCard test" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
           total.innerHTML= 'players total is :'+ player.score
-          toggle()
+          toggle('test')
           
         }
         
@@ -156,12 +157,12 @@ let toggle=()=>{
        
 
           while(dealer.score<17){
-
+ 
             card1=deck.pop();
             dealer.score+=card1.weight;
-            showCards.innerHTML+= `<span class="individualCard test" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
+            showCards.innerHTML+= `<span class="individualCard stand" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
             totals.innerHTML= 'dealer total is :'+ dealer.score
-          
+           toggle('stand')
              
           }
          
