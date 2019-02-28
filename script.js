@@ -7,61 +7,61 @@ const bj=(()=>{
   let player={
       score:null,
       card:[],
-      cash:100
+      cash:100,
+      bet:0
     };
-    let dealer={
+  let dealer={
       score:null,
       card:[]
     };
 
- const playerCash=document.getElementById('player-cash');
-  playerCash.innerHTML=`players Balance=${player.cash}`;
+  const playerCash=document.getElementById('player-cash');
+        playerCash.innerHTML=`players Balance=${player.cash}`;
   
-    let betBalance=()=>{
-       
-        const betAmount=document.getElementById('bet').value;
-              player.bet=betAmount
-              betPlaced=player.cash-betAmount;
-              playerCash.innerHTML=`players Balance= ${betPlaced}`;
+  let betBalance=()=>{
+    const betAmount=document.getElementById('bet').value;
+          player.bet=betAmount;
+          player.cash-=player.bet
+   
+          playerCash.innerHTML=`players Balance= ${player.cash}`;
 
     }
  
 
-    let reset=()=>{
-      let deck=[];
-      let player={
-          score:null,
-          card:[]
-         };
-      let dealer={
-          score:null,
-          card:[]
-    };
+ let playerWins=()=>{
+   let winnings = player.bet*2;
+   let totalReturns=player.cash+winnings;
+   player.cash=totalReturns;
+   playerCash.innerHTML=`players Balance= ${player.cash}`;
+
+ }  
+
+ let push=()=>{
+player.cash+=parseInt(player.bet)
+   playerCash.innerHTML=`players Balance= ${player.cash}`;
 
 
-    }
+ }
 
   let deckOfCards=()=>{
     
     //create deck of cards
     for(var i=0;i<suits.length;i++){
-      let bgcolor=null
-       if(suits[i].startsWith('h')||suits[i].startsWith('d') ){
-        bgcolor='red'
+        let bgcolor=null
+        if(suits[i].startsWith('h')||suits[i].startsWith('d') ){
+          bgcolor='red'
       }
-      else{
-        bgcolor='black'
-      }
-      for(var j=0;j<numbers.length;j++){
-        var weight=parseInt(numbers[j])
-        var card={
-          number:numbers[j],
-          suit:suits[i],
-          weight:weight,
-          bgcolor:bgcolor
+        else{
+          bgcolor='black'
+         }
+        for(var j=0;j<numbers.length;j++){
+          var weight=parseInt(numbers[j])
+          var card={
+            number:numbers[j],
+            suit:suits[i],
+            weight:weight,
+            bgcolor:bgcolor
            }
-
-
 
         if(numbers[j] === 'J' ||numbers[j] === 'Q' || numbers[j] === 'K'){card.weight=10;}
         if(numbers[j] === 'A'){card.weight=11} 
@@ -69,7 +69,7 @@ const bj=(()=>{
 
          deck.push(card);
          }
-    } 
+      } 
       return deck
   }
 
@@ -138,44 +138,60 @@ const bj=(()=>{
         
         let stand=()=>{
           let showCards=document.querySelector('#dealer .cards');
-          let total=document.querySelector('#dealer .totalScore');
+          let totals=document.querySelector('#dealer .totalScore');
           let card1;
-          
+       
+
           while(dealer.score<17){
+
             card1=deck.pop();
             dealer.score+=card1.weight;
             showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
-            total.innerHTML= 'dealer total is :'+ dealer.score
+            totals.innerHTML= 'dealer total is :'+ dealer.score
+          
              
           }
          
           
          if(dealer.score>21){
-             total.innerHTML= 'dealer total is :'+ dealer.score + ' BUST, player wins'
-            
+             totals.innerHTML= 'dealer total is :'+ dealer.score + ' BUST, player wins';
+              
+              playerWins()
+
+             
+
+
           }
         
           if(dealer.score > player.score && dealer.score <21){
-             total.innerHTML= 'dealer wins with '+ dealer.score
-            
+             totals.innerHTML= 'dealer wins with '+ dealer.score
+         
+        
           }
-          else if(dealer.score ===player.score){
-            total.innerHTML= `dealer has ${dealer.score} PUSH`
-            
+          if(dealer.score ===player.score){
+            totals.innerHTML= `dealer has ${dealer.score} PUSH`
+            push()
+              
           }
           
-          else{
-            total.innerHTML= `dealer is bust with ${dealer.score} player wins`
-            let returns =player.bet*2;
-            player.cash+=returns
+          if(player.score >21 && player.score>dealer.score){
+            totals.innerHTML= `dealer is bust with ${dealer.score} player wins`
+           playerWins()
+        
           }
+
+
+
+
           if(player.score ===21){
-            total.innerHTML= `PLAYER HAS BLACKJACK`
+            totals.innerHTML= `PLAYER HAS BLACKJACK`
+
 
           }
 
           if(dealer.score ===21){
-            total.innerHTML= `DEALER HAS BLACKJACK`
+            totals.innerHTML= `DEALER HAS BLACKJACK`
+
 
           }
           
