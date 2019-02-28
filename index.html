@@ -5,19 +5,21 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<div id="wrapper">
 	<div id="player-cash"></div> 
 		<input id="bet" type="number"/>
 <button id="start" onClick='bj.init()'>start game </button>
 
 <button id="start" onClick='bj.reset()'>restart </button>
 <div id="bj">
-	<div id="player"> </div>
+	<div id="player"> player</div>
   <div id="player-total"></div>
 
   <button id='hit' onClick="bj.hit()"> Hit </button>
   <button id='stand' onClick="bj.stand()"> Stand </button>
-	<div id="dealer"></div>
+	<div id="dealer">dealer</div>
   <div id="dealer-total"></div>
+</div>
 </div>
 
 <script src="script.js"></script>

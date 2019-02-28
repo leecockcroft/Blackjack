@@ -1,6 +1,6 @@
     
 const bj=(()=>{
-
+  
   const suits = ['hearts','clubs','spades','diams'];
   const numbers =['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
   let deck=[];
@@ -40,8 +40,17 @@ const bj=(()=>{
 player.cash+=parseInt(player.bet)
    playerCash.innerHTML=`players Balance= ${player.cash}`;
 
+ }
+
+ let blackJack=()=>{
+ let winnings = player.bet*2.5;
+   let totalReturns=player.cash+winnings;
+   player.cash=totalReturns;
+   playerCash.innerHTML=`players Balance= ${player.cash}`;
 
  }
+
+ 
 
   let deckOfCards=()=>{
     
@@ -128,7 +137,7 @@ player.cash+=parseInt(player.bet)
           
           if(player.score > 21)alert('bust your score is '+ player.score);
            if(player.score === 21)alert('21');
-          showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
+          showCards.innerHTML+= `<span class="individualCard animate" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
           total.innerHTML= 'players total is :'+ player.score
           
           
@@ -146,7 +155,7 @@ player.cash+=parseInt(player.bet)
 
             card1=deck.pop();
             dealer.score+=card1.weight;
-            showCards.innerHTML+= `<span class="individualCard" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
+            showCards.innerHTML+= `<span class="individualCard " data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
             totals.innerHTML= 'dealer total is :'+ dealer.score
           
              
@@ -185,7 +194,7 @@ player.cash+=parseInt(player.bet)
 
           if(player.score ===21){
             totals.innerHTML= `PLAYER HAS BLACKJACK`
-
+              blackJack()
 
           }
 

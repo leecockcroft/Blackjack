@@ -35,3 +35,23 @@
     right: 2px;
     transform: rotate(180deg);
 	   }
+
+	   .animate{
+
+	   	animation-name:test;
+	   	animation-duration:3s;
+	       transform: translateX(-85px);
+	           background: #fff;
+	   }
+
+	   @keyframes test{
+
+		from{
+			transform:translateX(200px);
+		}
+
+		to{
+			    transform: translateX(-85px);
+		}
+
+	   }
