@@ -119,10 +119,15 @@ player.cash+=parseInt(player.bet)
                   <div class="totalScore"> ${turn} total is: ${whosego.score}; </div>`  
     
 
-    
+   
 }
 
-
+let toggle=()=>{
+  let testing = document.querySelectorAll('.test')
+          for(var i=0;i<testing.length;i++){
+           testing[i].classList.toggle("animate");
+          }
+}
 
 
 
@@ -137,10 +142,9 @@ player.cash+=parseInt(player.bet)
           
           if(player.score > 21)alert('bust your score is '+ player.score);
            if(player.score === 21)alert('21');
-          showCards.innerHTML+= `<span class="individualCard animate" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
+          showCards.innerHTML+= `<span class="individualCard test" data-value=&${card1.suit};> ${card1.weight}<span class="suit">&${card1.suit};</span> <span class="card-reverse">${card1.weight}</span>  </span>`
           total.innerHTML= 'players total is :'+ player.score
-          
-          
+          toggle()
           
         }
         
@@ -155,7 +159,7 @@ player.cash+=parseInt(player.bet)
 
             card1=deck.pop();
             dealer.score+=card1.weight;
-            showCards.innerHTML+= `<span class="individualCard " data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
+            showCards.innerHTML+= `<span class="individualCard test" data-value=&${card1.suit};><span class="suit"> ${card1.weight}</span> &${card1.suit};<span class="card-reverse">${card1.weight}</span></span>`
             totals.innerHTML= 'dealer total is :'+ dealer.score
           
              

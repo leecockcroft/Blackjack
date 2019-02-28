@@ -8,6 +8,7 @@
 	width:100px;
 	display:inline-block;
 	position:relative;
+	
 	   }
 
 .individualCard:after{
@@ -40,7 +41,7 @@
 
 	   	animation-name:test;
 	   	animation-duration:3s;
-	       transform: translateX(-85px);
+	       transform: translateX(1px);
 	           background: #fff;
 	   }
 
@@ -51,7 +52,7 @@
 		}
 
 		to{
-			    transform: translateX(-85px);
+			    transform: translateX(1px);
 		}
 
 	   }
