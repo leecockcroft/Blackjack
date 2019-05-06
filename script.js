@@ -50,6 +50,14 @@ player.cash+=parseInt(player.bet)
 
  }
 
+ let checkBlackJack=(checkbj)=>{
+if(checkbj===21){
+
+  alert('blackjack')
+}
+
+ }
+
  
 
   let deckOfCards=()=>{
@@ -111,13 +119,15 @@ player.cash+=parseInt(player.bet)
                 whosego.card.push(card1)
                 x.push(card1.weight)
                 whosego.score=x.reduce((a,b)=>a+b);
+                checkBlackJack(player.score)
+                checkBlackJack(dealer.score)
         }
        
 
         showCards.innerHTML= ` <div class="cards"> <span class="individualCard" style=color:${whosego.card[0].bgcolor} data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit" >&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
-                  <span class="hidden individualCard" style=color:${whosego.card[1].bgcolor} data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
-                  <div class="totalScore"> ${turn} total is: ${whosego.score}; </div>`  
-    
+                  <span class=" ${turn} hidden individualCard" style=color:${whosego.card[1].bgcolor} data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
+                  <div class="totalScore ${turn}Total"> ${turn} total is: ${whosego.score};</span> </div>`  
+     
 
    
 }
@@ -154,7 +164,10 @@ let toggle=(className)=>{
           let showCards=document.querySelector('#dealer .cards');
           let totals=document.querySelector('#dealer .totalScore');
           let card1;
-       
+          let show=document.querySelector('.dealer');
+           let showTotal=document.querySelector('.dealerTotal');
+          show.style.backgroundColor='#fff'
+                showTotal.style.display='block'
 
           while(dealer.score<17){
  
