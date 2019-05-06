@@ -8,7 +8,7 @@
 	width:100px;
 	display:inline-block;
 	position:relative;
-	
+
 	   }
 
 .individualCard:after{
@@ -40,10 +40,24 @@
 	   .animate{
 
 	   	animation-name:test;
-	   	animation-duration:3s;
+	   	animation-duration:1s;
 	       transform: translateX(1px);
+	       
 	           background: #fff;
 	   }
+
+
+.dealer{
+	background:red;
+	color:red !important;
+}
+
+.dealerTotal{
+display:none;
+
+
+
+}
 
 	   @keyframes test{
 
