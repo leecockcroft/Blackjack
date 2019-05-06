@@ -124,7 +124,7 @@ if(checkbj===21){
         }
        
 
-        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" style=color:${whosego.card[0].bgcolor} data-value=&${whosego.card[0].suit};>${whosego.card[0].number};<span class="suit" >&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
+        showCards.innerHTML= ` <div class="cards"> <span class="individualCard" style=color:${whosego.card[0].bgcolor} data-value=&${whosego.card[0].suit};>${whosego.card[0].number}<span class="suit" >&${whosego.card[0].suit};</span><span class="card-reverse">${whosego.card[0].number}</span>  </span> 
                   <span class=" ${turn} hidden individualCard" style=color:${whosego.card[1].bgcolor} data-value=&${whosego.card[1].suit};> ${whosego.card[1].number} <span class="suit"> &${whosego.card[1].suit}; <span class="card-reverse">${whosego.card[1].number}</span></span> </div>
                   <div class="totalScore ${turn}Total"> ${turn} total is: ${whosego.score};</span> </div>`  
      

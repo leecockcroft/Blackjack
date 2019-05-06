@@ -1,3 +1,31 @@
+
+#wrapper{
+	background:url('blackjack.jpg');
+	background-repeat: no-repeat;
+	background-size:cover;
+	height:1000px;
+}
+
+#player{
+	    position: absolute;
+    top: 658px;
+    left: 867px;
+}
+
+#dealer{
+	    position: absolute;
+    left: 850px;
+    top: 115px;
+}
+
+#start{
+	 position: absolute;
+    top: 986px;
+    left: 814px;
+    cursor: pointer;
+    opacity: 0;
+}
+
 #hit,#stand {
 	display:none;
 	  }
@@ -8,6 +36,7 @@
 	width:100px;
 	display:inline-block;
 	position:relative;
+	background:#fff;
 
 	   }
 
@@ -62,7 +91,7 @@ display:none;
 	   @keyframes test{
 
 		from{
-			transform:translateX(200px);
+			transform:translate(517px,-463px)
 		}
 
 		to{
